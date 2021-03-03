@@ -11,14 +11,14 @@ import UIKit
 /// 1. 自适应高度
 /// 2. 设置 placeholder
 /// 3. 输入文字统计(需设置最大显示数量)
-class TextEditorView: UIView {
-    var contentInset: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8) {
+open class TextEditorView: UIView {
+    public var contentInset: UIEdgeInsets = .init(top: 8, left: 8, bottom: 8, right: 8) {
         didSet {
             setNeedsUpdateConstraints()
         }
     }
 
-    var textCountInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0) {
+    public var textCountInset: UIEdgeInsets = .init(top: 0, left: 0, bottom: 0, right: 0) {
         didSet {
             setNeedsUpdateConstraints()
         }
@@ -26,41 +26,41 @@ class TextEditorView: UIView {
 
     // MARK: - Placeholder
 
-    var placeholderAttributedText: NSAttributedString? {
+    public var placeholderAttributedText: NSAttributedString? {
         didSet {
             placeholderLabel.attributedText = placeholderAttributedText
         }
     }
 
-    var placeholderTextColor: UIColor = .gray {
+    public var placeholderTextColor: UIColor = .gray {
         didSet {
             placeholderLabel.textColor = placeholderTextColor
         }
     }
 
-    var placeholderFont = UIFont.systemFont(ofSize: 14) {
+    public var placeholderFont = UIFont.systemFont(ofSize: 14) {
         didSet {
             placeholderLabel.font = placeholderFont
         }
     }
 
-    var placeholder: String = "" {
+    public var placeholder: String = "" {
         didSet {
             placeholderLabel.text = placeholder
         }
     }
 
     /// 占位 text 行数
-    var placeholderNumberOfLines: UInt = 1 {
+    public var placeholderNumberOfLines: UInt = 1 {
         didSet {
             placeholderLabel.numberOfLines = Int(placeholderNumberOfLines)
         }
     }
 
     /// 输入范围最小高度， 注意: 表示实际 textView 文本高度。
-    var minHeight: CGFloat = 17
+    public var minHeight: CGFloat = 17
     /// 最长文本数量，默认值为nil,表示不受限制但同时会影藏数量 label
-    var maxTextCount: UInt? {
+    public var maxTextCount: UInt? {
         didSet {
             if let maxCount = maxTextCount {
                 textCountLabel.text = "\(textView.text.count)" + "/\(maxCount)"
@@ -70,14 +70,14 @@ class TextEditorView: UIView {
     }
 
     /// 是否影藏字数统计， 默认false.
-    var isHiddenTextCountLabel: Bool = false {
+    public var isHiddenTextCountLabel: Bool = false {
         didSet {
             setNeedsUpdateConstraints()
         }
     }
 
     /// 输入字数改变闭包，可以在这里设置textCount样式
-    var textCountChanged: (_ textCountLabel: UILabel, _ textCount: Int) -> Void = { _, _ in
+    public var textCountChanged: (_ textCountLabel: UILabel, _ textCount: Int) -> Void = { _, _ in
     } {
         didSet {
             setNeedsUpdateConstraints()
@@ -86,7 +86,7 @@ class TextEditorView: UIView {
     }
 
     /// 输入文字改变闭包（不包含正在输入的高亮部分）
-    var textDidChanged: (_ text: String) -> Void = { _ in }
+    public var textDidChanged: (_ text: String) -> Void = { _ in }
 
     // MARK: - Private Property
 
@@ -98,7 +98,7 @@ class TextEditorView: UIView {
     private var textViewBottomLayoutConstraint: NSLayoutConstraint?
     private var textCountLabelTopLayoutConstraint: NSLayoutConstraint?
 
-    override var intrinsicContentSize: CGSize {
+    open override var intrinsicContentSize: CGSize {
         let size = textSize()
         var height = size.height > minHeight ? size.height : minHeight
         if !textCountLabel.isHidden {
@@ -115,7 +115,7 @@ class TextEditorView: UIView {
         commonInit()
     }
 
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -127,7 +127,7 @@ class TextEditorView: UIView {
         backgroundColor = .white
     }
 
-    override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         placeholderLabel.isHidden = !textView.text.isEmpty
         checkTextChanged()
@@ -139,7 +139,7 @@ class TextEditorView: UIView {
         }
     }
 
-    override func updateConstraints() {
+    open override func updateConstraints() {
         let selfConstraints = constraints
         // 更新约束
         selfConstraints.first(where: { $0.identifier == Key.textCountLabelRightLayoutConstraintIdentifier })!.constant = -textCountInset.right
@@ -272,7 +272,7 @@ extension TextEditorView {
 }
 
 extension TextEditorView: UITextViewDelegate {
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         if let markedRange = textView.markedTextRange, !markedRange.isEmpty {
             /// 输入高亮部分，
             placeholderLabel.isHidden = true
