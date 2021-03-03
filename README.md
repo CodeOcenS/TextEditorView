@@ -22,7 +22,7 @@ pod 'TextEditorView'
 
 ## Author
 
-CodeOcenS, liwanfu5@hikcreate.com
+
 
 ## License
 
