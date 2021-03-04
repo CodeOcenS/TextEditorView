@@ -5,6 +5,12 @@
 [![License](https://img.shields.io/cocoapods/l/TextEditorView.svg?style=flat)](https://cocoapods.org/pods/TextEditorView)
 [![Platform](https://img.shields.io/cocoapods/p/TextEditorView.svg?style=flat)](https://cocoapods.org/pods/TextEditorView)
 
+## 主要功能
+
+1. 添加占位（placeholder）和占位基本属性配置
+2. 自动根据文本扩展高度，支持 AutoLayout
+3. 字数统计和限制
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
