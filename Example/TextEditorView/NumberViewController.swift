@@ -14,7 +14,7 @@ class NumberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "placeholder"
+        
         view.backgroundColor = .orange
         setupTextEditor()
         setupLayout()
@@ -25,9 +25,16 @@ class NumberViewController: UIViewController {
         textEditroView.placeholderFont = UIFont.systemFont(ofSize: 15)
         textEditroView.placeholderTextColor = UIColor.gray
         textEditroView.placeholderNumberOfLines = 1 // 最大行数， 会影响初始 textView 高度
-        
-        textEditroView.maxTextCount = 100
+        let maxCount = 100
+        textEditroView.maxTextCount = UInt(maxCount)
         textEditroView.isHiddenTextCountLabel = false
+        textEditroView.textCountChanged = {
+            numberLabel, count in
+            // 修改 Lable 样式
+            numberLabel.font = UIFont.systemFont(ofSize: 11)
+            numberLabel.textColor = UIColor.orange
+            numberLabel.text = "您还可以输入\(maxCount-count)字"
+        }
     }
     
     private func setupLayout() {

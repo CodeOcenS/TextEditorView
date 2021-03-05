@@ -38,19 +38,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var vc = UIViewController()
         switch indexPath.section {
         case 0:
-            let place = PlaceholderViewController()
-            self.navigationController?.pushViewController(place, animated: true)
+            vc = PlaceholderViewController()
+            
         case 1:
-            let auto = AutoViewController()
-            self.navigationController?.pushViewController(auto, animated: true)
+            vc = AutoViewController()
+           
         case 2:
-            let number = NumberViewController()
-            self.navigationController?.pushViewController(number, animated: true)
+            vc = NumberViewController()
         default:
             return
         }
+        vc.title = datasource[indexPath.section]
+        self.navigationController?.pushViewController(vc, animated: true)
     }
 }
 

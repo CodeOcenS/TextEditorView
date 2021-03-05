@@ -8,8 +8,16 @@
 ## 主要功能
 
 1. 添加占位（placeholder）和占位基本属性配置
+
+   ![Alt](./images/placeholder.png)
+
 2. 自动根据文本扩展高度，支持 AutoLayout
+
+![Alt](./images/autoLayout.gif)
+
 3. 字数统计和限制
+
+![Alt](./images/maxNumber.gif)
 
 ## Example
 
