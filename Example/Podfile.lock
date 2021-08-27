@@ -1,27 +1,16 @@
 PODS:
-  - Nimble (8.0.9)
-  - Quick (2.2.1)
-  - TextEditorView (0.1.0)
+  - TextEditorView (0.1.1)
 
 DEPENDENCIES:
-  - Nimble (~> 8.0.7)
-  - Quick (~> 2.2.0)
   - TextEditorView (from `../`)
-
-SPEC REPOS:
-  trunk:
-    - Nimble
-    - Quick
 
 EXTERNAL SOURCES:
   TextEditorView:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 98b888285a615fd34f20e61753cf58ea1402bde4
-  Quick: f5754d69b7013f5864c29aab9ae6f0c79c5bc200
-  TextEditorView: 36393201d8073332fbb6f1307409cf5cdac1cfa4
+  TextEditorView: 1b9e7c75460d80c9f111c75e52e1da81583f5ced
 
-PODFILE CHECKSUM: 5f28678499e9ce5ea2b26d0f274a7b9e0434fd48
+PODFILE CHECKSUM: 60ebbf8a52bb1bf10a7cc6e870d7ae2325e38d9e
 
 COCOAPODS: 1.10.1

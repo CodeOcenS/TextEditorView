@@ -87,18 +87,20 @@ open class TextEditorView: UIView {
 
     /// 输入文字改变闭包（不包含正在输入的高亮部分）
     public var textDidChanged: (_ text: String) -> Void = { _ in }
+    /// 高度改变，是否允许滑动。默认允许滑动
+    public var heightDidChangedShouldScroll: (_ height: CGFloat) -> Bool = { _ in true }
 
     // MARK: - Private Property
 
     private var lastText: String = ""
     private var isNeedsUpdateTextCountLabel: Bool = false
-    private(set) var textCountLabel = UILabel()
-    private(set) var textView = UITextView()
+    public let textCountLabel = UILabel()
+    public let textView = UITextView()
     private var placeholderLabel = UILabel()
     private var textViewBottomLayoutConstraint: NSLayoutConstraint?
     private var textCountLabelTopLayoutConstraint: NSLayoutConstraint?
 
-    open override var intrinsicContentSize: CGSize {
+    override open var intrinsicContentSize: CGSize {
         let size = textSize()
         var height = size.height > minHeight ? size.height : minHeight
         if !textCountLabel.isHidden {
@@ -110,12 +112,12 @@ open class TextEditorView: UIView {
         return CGSize(width: UIView.noIntrinsicMetric, height: height)
     }
 
-    override init(frame: CGRect) {
+    override public init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
 
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         super.init(coder: coder)
         commonInit()
     }
@@ -127,7 +129,7 @@ open class TextEditorView: UIView {
         backgroundColor = .white
     }
 
-    open override func layoutSubviews() {
+    override open func layoutSubviews() {
         super.layoutSubviews()
         placeholderLabel.isHidden = !textView.text.isEmpty
         checkTextChanged()
@@ -139,7 +141,7 @@ open class TextEditorView: UIView {
         }
     }
 
-    open override func updateConstraints() {
+    override open func updateConstraints() {
         let selfConstraints = constraints
         // 更新约束
         selfConstraints.first(where: { $0.identifier == Key.textCountLabelRightLayoutConstraintIdentifier })!.constant = -textCountInset.right
@@ -245,7 +247,12 @@ private extension TextEditorView {
             return
         }
         lastText = newText
+
         textDidChanged(newText)
+        let height = intrinsicContentSize.height
+        let isScroll = heightDidChangedShouldScroll(height)
+        textView.isScrollEnabled = isScroll
+        textView.showsVerticalScrollIndicator = isScroll
     }
 
     func checkTextCountChanged() {
@@ -292,3 +299,4 @@ extension TextEditorView: UITextViewDelegate {
         checkTextChanged()
     }
 }
+
