@@ -1,6 +1,6 @@
 
 desc '使用这个航道, 可以快速的对自己的私有库, 进行升级维护'
-lane :ManagerLib do |options|
+lane :UpdateLib do |options|
 
 tagName = options[:tag]
 targetName = options[:target]
@@ -25,10 +25,10 @@ push_to_git_remote
 #    执行删除本地/远程标签
 #end
 
-if git_tag_exists(tag: tagName)
-    UI.message("发现tag:#{tagName} 已经存在, 即将执行, 删除动作 🚀")
-    remove_tag(tag:tagName)
-end
+#if git_tag_exists(tag: tagName)
+#    UI.message("发现tag:#{tagName} 已经存在, 即将执行, 删除动作 🚀")
+#    remove_tag(tag:tagName)
+#end
 
 
 # 3. git tag 标签名称
@@ -38,10 +38,10 @@ tag: tagName
 #    git push --tags
 push_git_tags
 
-# 4. pod spec lint
-# pod_lib_lint(allow_warnings: true)
-#    pod repo push XXXX xxx.podspec
-pod_push(path: "#{targetName}.podspec", repo: "XMGFMSpecs", allow_warnings: true)
-
+#4. pod spec lint
+pod_lib_lint(allow_warnings: true)
+#5. pod repo push XXXX xxx.podspec
+pod_push(path: "#{targetName}.podspec", allow_warnings: true) # , repo: "XMGFMSpecs"
+ 
 
 end
