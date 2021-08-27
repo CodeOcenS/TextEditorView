@@ -36,7 +36,9 @@ add_git_tag(
 tag: tagName
 )
 #    git push --tags
-push_git_tags
+push_git_tags(
+remote:"github"
+)
 
 #4. pod spec lint
 pod_lib_lint(allow_warnings: true)
