@@ -18,7 +18,7 @@ git_add(path: ".")
 #    git commit -m 'xxx'
 git_commit(path: ".", message: "版本升级维护")
 #    git push origin master
-push_to_git_remote
+push_to_git_remote(remote:"github")
 
 # 验证tag是否存在,如果存在, 应该删除本地标签和远程标签
 #if 判断标签是否存在
