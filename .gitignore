@@ -2,7 +2,7 @@
 .DS_Store
 
 # fastlane
-*/report.xml
+fastlane/report.xml
 
 # Xcode
 build/
