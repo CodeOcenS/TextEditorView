@@ -1,6 +1,6 @@
 {
   "name": "TextEditorView",
-  "version": "0.1.14",
+  "version": "0.1.16",
   "summary": "具有占位、自动扩展、字数统计的 textView",
   "description": "一个 TextView, 具有占位，AutoLayout输入自动扩展， 输入字数统计功能",
   "homepage": "https://github.com/CodeOcenS/TextEditorView",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/CodeOcenS/TextEditorView.git",
-    "tag": "0.1.14"
+    "tag": "0.1.16"
   },
   "platforms": {
     "ios": "9.0"

@@ -1,5 +1,5 @@
 PODS:
-  - TextEditorView (0.1.14)
+  - TextEditorView (0.1.16)
 
 DEPENDENCIES:
   - TextEditorView (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  TextEditorView: 1588990c275656473b3c04b707183bde34262d39
+  TextEditorView: fc952834ea529909e7d356a2508e9577a4c1c13d
 
 PODFILE CHECKSUM: 60ebbf8a52bb1bf10a7cc6e870d7ae2325e38d9e
 

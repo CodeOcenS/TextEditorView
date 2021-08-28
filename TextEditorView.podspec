@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'TextEditorView'
-  s.version          = '0.1.15'
+  s.version          = '0.1.16'
   s.summary          = '具有占位、自动扩展、字数统计的 textView'
 
 # This description is used to generate tags and improve search results.
